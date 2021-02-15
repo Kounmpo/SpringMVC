@@ -7,9 +7,9 @@
        http://www.springframework.org/schema/context
        https://www.springframework.org/schema/context/spring-context.xsd">
 
-<context:component-scan base-package="com.hui.*"/>
-<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-    <property name="prefix" value="/WEB-INF/view/"/>
-    <property name="suffix" value=".jsp"/>
-</bean>
+    <context:component-scan base-package="com.hui.*"/>
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/view/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
 </beans>

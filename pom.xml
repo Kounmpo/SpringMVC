@@ -11,6 +11,7 @@
     <modules>
         <module>hjh01-hello-springmvc</module>
         <module>hjh02-springmvc</module>
+        <module>hjh03-receive-parameter</module>
     </modules>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
