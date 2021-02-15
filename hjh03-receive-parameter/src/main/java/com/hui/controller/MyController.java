@@ -28,7 +28,7 @@ public class MyController {
 	 */
 	@RequestMapping(value = "hello", method = RequestMethod.POST)
 	public ModelAndView hello(String name,
-				  Integer age) {
+							  Integer age) {
 		// 可以在方法中直接使用前端传过来的name与age
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("myName",name);
