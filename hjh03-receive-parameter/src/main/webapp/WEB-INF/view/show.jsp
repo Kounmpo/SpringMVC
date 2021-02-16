@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<p><h3>${myName}</h3></p>
-<p><h3>${myAge}</h3></p>
+<p><h3>name:${myName}</h3></p>
+<p><h3>age:${myAge}</h3></p>
 </body>
 </html>

@@ -3,6 +3,7 @@ package com.hui.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -37,9 +38,22 @@ public class MyController {
 		return mv;
 	}
 
-	@RequestMapping(value = "receive-parameter", method = RequestMethod.POST)
-	public ModelAndView receiveParameter(String name,
-							  Integer age) {
+	/**
+	 * 请求中参数名和形参名不一致
+	 * @RequestParam：解决请求中参数名与形参名不一致的问题
+	 * 属性：
+	 * 		1.value：请求中的参数名称,value等于表单中的"name"属性值
+	 * 		2.required：一个boolean值 默认是true
+	 * 			true表示请求中必须包含参数
+	 * 			false表示请求中的参数可为空
+	 * 位置：在处理器方法的形参定义前
+	 * @param name
+	 * @param age
+	 * @return ModelAndView
+	 */
+	@RequestMapping(value = "receive-parameter",method = RequestMethod.POST)
+	public ModelAndView receiveParameter(@RequestParam(value = "r-name" ,required = false) String name,
+							  @RequestParam(value = "r-age", required = false) Integer age) {
 		System.out.println("name:" + name + " age:" + age);
 		// 可以在方法中直接使用前端传过来的name与age
 		ModelAndView mv = new ModelAndView();
@@ -48,5 +62,4 @@ public class MyController {
 		mv.setViewName("show");
 		return mv;
 	}
-
 }
