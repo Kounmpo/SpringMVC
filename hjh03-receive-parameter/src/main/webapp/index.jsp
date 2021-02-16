@@ -17,5 +17,13 @@
         年龄:<input type="text" name="age"/><br/>
         <input type="submit" value="提交参数"/><br/>
     </form>
+    <p>请求中参数名与处理器方法形参不一致</p>
+    <p>
+    <form action="/hjh03/receive-parameter" method="post">
+        姓名:<input type="text" name="r-name"/><br/>
+        年龄:<input type="text" name="r-age"/><br/>
+        <input type="submit" value="提交参数"/><br/>
+    </form>
+    </p>
 </body>
 </html>

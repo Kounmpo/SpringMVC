@@ -37,4 +37,16 @@ public class MyController {
 		return mv;
 	}
 
+	@RequestMapping(value = "receive-parameter", method = RequestMethod.POST)
+	public ModelAndView receiveParameter(String name,
+							  Integer age) {
+		System.out.println("name:" + name + " age:" + age);
+		// 可以在方法中直接使用前端传过来的name与age
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("myName",name);
+		mv.addObject("myAge",age);
+		mv.setViewName("show");
+		return mv;
+	}
+
 }
