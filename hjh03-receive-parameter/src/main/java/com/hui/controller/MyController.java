@@ -46,12 +46,16 @@ public class MyController {
 	 * 		2.required：一个boolean值 默认是true
 	 * 			true表示请求中必须包含参数
 	 * 			false表示请求中的参数可为空
+	 * 			测试required为false时，直接复制Controller uri到浏览器地址出现
+	 * 			Request method 'GET' not supported
+	 * 			浏览器默认发送请求默认时是GET方式，但是在Controller中没有对应的方法来处理这个GET方式的请求
+	 * 			解决方法：去掉"method = RequestMethod.POST"，这样Controller就能处理GET和POST两种方式的请求
 	 * 位置：在处理器方法的形参定义前
 	 * @param name
 	 * @param age
 	 * @return ModelAndView
 	 */
-	@RequestMapping(value = "receive-parameter",method = RequestMethod.POST)
+	@RequestMapping(value = "receive-parameter")
 	public ModelAndView receiveParameter(@RequestParam(value = "r-name" ,required = false) String name,
 							  @RequestParam(value = "r-age", required = false) Integer age) {
 		System.out.println("name:" + name + " age:" + age);
