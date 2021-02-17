@@ -13,6 +13,5 @@
 <body>
 <p><h3>name:${myName}</h3></p>
 <p><h3>age:${myAge}</h3></p>
-<p><h3>Student数据:${myStudent}</h3></p>
 </body>
 </html>
