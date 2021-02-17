@@ -36,7 +36,24 @@
     <script type="text/javascript">
         $(function (){
             $("#btn").click(function () {
-                alert("click button");
+                // 测试jQuery
+                // alert("click button");
+                $.ajax({
+                    url:"hjh04/return-void-ajax",
+                    data:{
+                      name:"James",
+                      age:23
+                    },
+                    type:"POST",
+                    // 客户端希望得到json格式的数据
+                    dataType:"json",
+                    success:function(result){
+                        // result就是服务器返回的json结果，是服务器传回的处理后的json字符串
+                        // 当jquery拿到这个result之后。会将其转化为一个json object 赋值给形参result
+                        //alert(result);
+                      alert("name:" + result.name + " age:" + result.age);
+                    }
+                });
             });
         });
     </script>

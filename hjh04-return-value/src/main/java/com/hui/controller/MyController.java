@@ -1,9 +1,15 @@
 package com.hui.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hui.vo.Student;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  * @author huang jiehui
@@ -43,6 +49,38 @@ public class MyController {
 		// 出现404文件[/WEB-INF/view/WEB-INF/view/show.jsp.jsp] 未找到
 		// 因为返回完整路径会与视图解析器冲突，暂时的解决方法是将视图解析器删除
 		return "/WEB-INF/view/show.jsp";
+	}
+
+	/**
+	 * 处理方法返回void,响应ajax请求
+	 * @param response
+	 * @param name
+	 * @param age
+	 * @return
+	 */
+	@RequestMapping(value = "return-void-ajax", method = RequestMethod.POST)
+	public void returnVoidAjax(HttpServletResponse response,
+							   String name,
+							   Integer age) throws IOException {
+		System.out.println("name:" + name + " age:" + age);
+		// 处理ajax，使用json做数据的格式
+		// service调用完成了，使用Student表示处理结果
+		Student student = new Student();
+		student.setAge(age);
+		student.setName(name);
+		// 把结果的对象转换成json格式的数据
+		String json = "";
+		if(student != null){
+			ObjectMapper om = new ObjectMapper();
+			json = om.writeValueAsString(student);
+			System.out.println("Student对象转换成json====" + json);
+		}
+		// 输出数据，响应ajax请求
+		response.setContentType("application/json;charset=utf-8");
+		PrintWriter pw = response.getWriter();
+		pw.println(json);
+		pw.flush();
+		pw.close();
 	}
 
 }

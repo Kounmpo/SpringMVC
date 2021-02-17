@@ -16,5 +16,5 @@ public class Student {
 	 * 属性名与请求参数名必须一致
 	 */
 	String name;
-	String age;
+	Integer age;
 }
