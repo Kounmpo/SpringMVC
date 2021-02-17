@@ -21,13 +21,11 @@ public class MyController {
 	 * @return
 	 */
 	@RequestMapping(value = "return-value-string", method = RequestMethod.POST)
-	public ModelAndView hello(String name,
+	public String returnValueString(String name,
 							  Integer age) {
-		// 可以在方法中直接使用前端传过来的name与age
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("myName",name);
-		mv.addObject("myAge",age);
-		mv.setViewName("show");
-		return mv;
+		System.out.println("name:" + name + " age:" + age);
+		// show逻辑视图名称，项目中配置了视图解析器
+		// 框架对视图执行forward转发操作
+		return "show";
 	}
 }
