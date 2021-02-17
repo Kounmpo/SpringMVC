@@ -20,5 +20,13 @@
         </form>
     </p>
 
+    <p>处理器方法返回String--视图完整路径</p>
+    <p>
+    <form action="/hjh04/return-value-string1" method="post">
+        姓名:<input type="text" name="name"/><br/>
+        年龄:<input type="text" name="age"/><br/>
+        <input type="submit" value="提交参数"/><br/>
+    </form>
+    </p>
 </body>
 </html>

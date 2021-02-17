@@ -1,11 +1,8 @@
 package com.hui.controller;
 
-import com.hui.vo.Student;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -34,4 +31,18 @@ public class MyController {
 		request.setAttribute("myAge",age);
 		return "show";
 	}
+
+	@RequestMapping(value = "return-value-string1", method = RequestMethod.POST)
+	public String returnValueString1(HttpServletRequest request,
+									String name,
+									Integer age) {
+		System.out.println("name:" + name + " age:" + age);
+		request.setAttribute("myName",name);
+		request.setAttribute("myAge",age);
+		// 完整视图路径，项目中不能有视图解析器
+		// 出现404文件[/WEB-INF/view/WEB-INF/view/show.jsp.jsp] 未找到
+		// 因为返回完整路径会与视图解析器冲突，暂时的解决方法是将视图解析器删除
+		return "/WEB-INF/view/show.jsp";
+	}
+
 }
