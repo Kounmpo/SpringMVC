@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>Title</title>
+<%--    引入jQuery文件--%>
 </head>
 <body>
     <p>处理器方法返回String</p>
@@ -28,5 +29,16 @@
         <input type="submit" value="提交参数"/><br/>
     </form>
     </p>
+    <p>
+        <button id="btn">发起ajax请求</button>
+    </p>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function (){
+            $("#btn").click(function () {
+                alert("click button");
+            });
+        });
+    </script>
 </body>
 </html>
