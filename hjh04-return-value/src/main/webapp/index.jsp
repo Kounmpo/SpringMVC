@@ -32,6 +32,14 @@
     <p>
         <button id="btn">发起ajax请求</button>
     </p>
+    <p>使用注解驱动返回json字符串</p>
+    <p>
+    <form action="/hjh04/return-object-json" method="post">
+        姓名:<input type="text" name="name"/><br/>
+        年龄:<input type="text" name="age"/><br/>
+        <input type="submit" value="提交参数"/><br/>
+    </form>
+    </p>
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script type="text/javascript">
         $(function (){

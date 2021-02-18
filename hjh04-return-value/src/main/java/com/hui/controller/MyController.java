@@ -6,6 +6,7 @@ import com.hui.vo.Student;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -53,10 +54,12 @@ public class MyController {
 
 	/**
 	 * 处理方法返回void,响应ajax请求
+	 * 手工实现响应ajax请求返回json数据，代码出现重复：java对象转成json对象;通过HttpServletResponse传递json数据
+	 * 这部分重复的工作可以交给框架来完成
 	 * @param response
 	 * @param name
 	 * @param age
-	 * @return
+	 * @return void
 	 */
 	@RequestMapping(value = "return-void-ajax", method = RequestMethod.POST)
 	public void returnVoidAjax(HttpServletResponse response,
@@ -83,4 +86,9 @@ public class MyController {
 		pw.close();
 	}
 
+	@RequestMapping(value = "return-object-json", method = RequestMethod.POST)
+	@ResponseBody
+	public Student returnVoidAjax(Student student) throws IOException {
+		return student;
+	}
 }
