@@ -86,9 +86,37 @@ public class MyController {
 		pw.close();
 	}
 
+	/**
+	 * 使用对象接收参数，通过注解驱动返回json字符串
+	 * @param student
+	 * @return
+	 */
 	@RequestMapping(value = "return-object-json", method = RequestMethod.POST)
 	@ResponseBody
-	public Student returnVoidAjax(Student student) throws IOException {
+	public Student returnVoidAjax(Student student) {
+		return student;
+	}
+
+	/**
+	 * 处理器方法返回一个Student,通过框架转为json，响应ajax请求
+	 * @param response
+	 * @param name
+	 * @param age
+	 * @return Student
+	 * @ResponseBody:
+	 * 作用：把处理器方法返回的对象转为json后，通过HttpServletResponse输出给浏览器
+	 * 和其他注解没有顺序的关系
+	 */
+	@RequestMapping(value = "student-json-object")
+	@ResponseBody
+	public Student doStudentJsonObject(HttpServletResponse response,
+									   String name,
+									   Integer age) {
+		// 调用Service，获取请求结果数据，Student表示返回的结果数据
+		Student student = new Student();
+		student.setName(name);
+		student.setAge(age);
+		// 会被框架转为json
 		return student;
 	}
 }

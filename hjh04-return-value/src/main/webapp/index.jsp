@@ -40,6 +40,9 @@
         <input type="submit" value="提交参数"/><br/>
     </form>
     </p>
+    <p>
+        <button id="btn1">ajax发起请求1</button>
+    </p>
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script type="text/javascript">
         $(function (){
@@ -62,6 +65,20 @@
                       alert("name:" + result.name + " age:" + result.age);
                     }
                 });
+            });
+        });
+
+        $("#btn1").click(function () {
+            $.ajax({
+                url: "hjh04/student-json-object",
+                data: {
+                    name: "James",
+                    age:23
+                },
+                type: "POST",
+                success(result){
+                    alert("name:" + result.name + " age:" + result.age);
+                }
             });
         });
     </script>
