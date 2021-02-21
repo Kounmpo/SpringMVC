@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <context:component-scan base-package="com.hui.*"/>
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/view/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+<!--    加入注解驱动-->
+    <mvc:annotation-driven/>
+<!--    因为在web.xml中配置了DispatcherServlet拦截所有的资源-->
+<!--    这样DispatchServlet会把所有的请求都会拦截，静态资源就也会被拦截，导致无法访问（譬如：js文件，css文件，图片等）。-->
+<!--    所以需要配置允许访问静态资源-->
+    <mvc:resources location="/image/" mapping="/image/**" />
+    <mvc:resources location="/html/" mapping="/html/**" />
+    <mvc:resources location="/js/" mapping="/js/**" />
+</beans>
