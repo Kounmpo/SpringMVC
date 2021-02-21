@@ -43,6 +43,9 @@
     <p>
         <button id="btn1">ajax发起请求1</button>
     </p>
+    <p>
+        <button id="btn2">传送json数组</button>
+    </p>
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script type="text/javascript">
         $(function (){
@@ -78,6 +81,21 @@
                 type: "POST",
                 success(result){
                     alert("name:" + result.name + " age:" + result.age);
+                }
+            });
+        });
+        $("#btn2").click(function (){
+            $.ajax({
+                url:"hjh04/student-json-List",
+                data:{
+                  name:"Harden",
+                  age:13
+                },
+                type:"POST",
+                success(result){
+                    $.each(result,function (i,v) {
+                        alert("name:" + v.name + " age:" + v.age);
+                    });
                 }
             });
         });

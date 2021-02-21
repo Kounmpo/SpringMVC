@@ -122,16 +122,12 @@ public class MyController {
 
 	/**
 	 * 处理器方法返回的是一个List<Student>
-	 * @param response
-	 * @param name
-	 * @param age
+	 * @param student
 	 * @return
 	 */
 	@RequestMapping(value = "student-json-List")
 	@ResponseBody
-	public List<Student> doStudentJsonList(HttpServletResponse response,
-											 String name,
-											 Integer age) {
+	public List<Student> doStudentJsonList(Student student) {
 		List<Student> list = new ArrayList();
 		Student student1 = new Student();
 		student1.setName("James");
@@ -141,6 +137,7 @@ public class MyController {
 		student2.setAge(23);
 		list.add(student1);
 		list.add(student2);
+		list.add(student);
 		// 最终返回给浏览器的是一个json数组，直接在浏览器中访问这个地址
 		return list;
 	}
