@@ -46,6 +46,9 @@
     <p>
         <button id="btn2">传送json数组</button>
     </p>
+    <p>
+        <button id="btn3">传送String文本数据</button>
+    </p>
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script type="text/javascript">
         $(function (){
@@ -79,6 +82,7 @@
                     age:23
                 },
                 type: "POST",
+                dataType:"json",
                 success(result){
                     alert("name:" + result.name + " age:" + result.age);
                 }
@@ -92,10 +96,20 @@
                   age:13
                 },
                 type:"POST",
+                dataType: "json",
                 success(result){
                     $.each(result,function (i,v) {
                         alert("name:" + v.name + " age:" + v.age);
                     });
+                }
+            });
+        });
+        $("#btn3").click(function () {
+            $.ajax({
+                url:"hjh04/string-data",
+                type:"POST",
+                success(result){
+                    alert(result);
                 }
             });
         });

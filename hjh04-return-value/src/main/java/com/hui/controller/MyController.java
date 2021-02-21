@@ -141,4 +141,15 @@ public class MyController {
 		// 最终返回给浏览器的是一个json数组，直接在浏览器中访问这个地址
 		return list;
 	}
+
+	/**
+	 * 处理器方法返回的是String，String表示的是数据，不是视图
+	 * 区分返回值字符串是数据还是视图，是看有没有@ResponseBody这个注解
+	 * 有这个注解，返回的String是数据
+	 */
+	@RequestMapping(value = "string-data")
+	@ResponseBody
+	public String doStringData(String name, Integer age) {
+		return "Hello World!";
+	}
 }
