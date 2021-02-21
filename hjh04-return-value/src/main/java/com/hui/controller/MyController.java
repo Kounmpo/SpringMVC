@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author huang jiehui
@@ -98,8 +100,7 @@ public class MyController {
 	}
 
 	/**
-	 * 处理器方法返回一个Student,通过框架转为json，响应ajax请求
-	 * @param response
+	 * 处理器方法返回Student,通过框架转为json，响应ajax请求
 	 * @param name
 	 * @param age
 	 * @return Student
@@ -109,8 +110,7 @@ public class MyController {
 	 */
 	@RequestMapping(value = "student-json-object")
 	@ResponseBody
-	public Student doStudentJsonObject(HttpServletResponse response,
-									   String name,
+	public Student doStudentJsonObject(String name,
 									   Integer age) {
 		// 调用Service，获取请求结果数据，Student表示返回的结果数据
 		Student student = new Student();
@@ -118,5 +118,30 @@ public class MyController {
 		student.setAge(age);
 		// 会被框架转为json
 		return student;
+	}
+
+	/**
+	 * 处理器方法返回的是一个List<Student>
+	 * @param response
+	 * @param name
+	 * @param age
+	 * @return
+	 */
+	@RequestMapping(value = "student-json-List")
+	@ResponseBody
+	public List<Student> doStudentJsonList(HttpServletResponse response,
+											 String name,
+											 Integer age) {
+		List<Student> list = new ArrayList();
+		Student student1 = new Student();
+		student1.setName("James");
+		student1.setAge(23);
+		Student student2 = new Student();
+		student2.setName("Lebron");
+		student2.setAge(23);
+		list.add(student1);
+		list.add(student2);
+		// 最终返回给浏览器的是一个json数组，直接在浏览器中访问这个地址
+		return list;
 	}
 }
