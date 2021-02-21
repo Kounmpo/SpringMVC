@@ -108,6 +108,8 @@
             $.ajax({
                 url:"hjh04/string-data",
                 type:"POST",
+                // dataType:"json",
+                // dataType:"text",
                 success(result){
                     alert(result);
                 }

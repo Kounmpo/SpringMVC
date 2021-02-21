@@ -146,10 +146,17 @@ public class MyController {
 	 * 处理器方法返回的是String，String表示的是数据，不是视图
 	 * 区分返回值字符串是数据还是视图，是看有没有@ResponseBody这个注解
 	 * 有这个注解，返回的String是数据
+	 * 加上dataType:"json"之后，没有出现弹窗，是因为，jQuery拿到result数据之后，会将结果转成json，但是返回结果不是json格式，仅仅
+	 * 是一个字符串而已，所以转换失败，直接把dataType干掉就行了，或者将dataType改为text就行了
+	 * 弹窗会出现乱码，因为在请求消息头中Content-Type: text/plain;charset=ISO-8859-1 服务器响应过去的数据默认使用的是这个编码格式
+	 * 解决方案：给RequestMapping增加一个属性produces，使用这个属性指定新的contentType
+	 *
+	 * 返回String类型框架处理流程
+	 * 	
 	 */
-	@RequestMapping(value = "string-data")
+	@RequestMapping(value = "string-data",produces = "text/plain;charset=utf-8")
 	@ResponseBody
-	public String doStringData(String name, Integer age) {
-		return "Hello World!";
+	public String doStringData() {
+		return "Hello World!哈哈哈";
 	}
 }
