@@ -18,6 +18,6 @@
         年龄:<input type="text" name="age"><br/>
         <input type="submit" value="提交参数">
     </form>
-    <img src="image/1.jpg" alt="我是一个静态资源,显示异常">
+    <img src="static/image/1.jpg" alt="我是一个静态资源,显示异常">
 </body>
 </html>

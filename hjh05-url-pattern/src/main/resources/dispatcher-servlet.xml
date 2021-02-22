@@ -25,5 +25,6 @@
         他会像一个检查员，对进入DispatcherServlet的URL进行筛选，如果发现是静态资源的请求，就将改请求转向(转发)Web应用服务器默认的Servlet处理
         。一般的服务器都有默认的Servlet，在Tomcat中有一个专门用于处理静态资源访问的Servlet名叫DefaultServlet。其<servlet-name/>为default
         可以处理各种静态资源访问请求。改Servlet注册在Tomcat服务器的web.xml中。-->
-    <mvc:default-servlet-handler/>
+<!--    <mvc:default-servlet-handler/>-->
+    <mvc:resources mapping="/static/**" location="/static/"/>
 </beans>
