@@ -18,7 +18,12 @@
 <!--    因为在web.xml中配置了DispatcherServlet拦截所有的资源-->
 <!--    这样DispatchServlet会把所有的请求都会拦截，静态资源就也会被拦截，导致无法访问（譬如：js文件，css文件，图片等）。-->
 <!--    所以需要配置允许访问静态资源-->
-    <mvc:resources location="/image/" mapping="/image/**" />
-    <mvc:resources location="/html/" mapping="/html/**" />
-    <mvc:resources location="/js/" mapping="/js/**" />
+<!--    <mvc:resources location="/image/" mapping="/image/**" />-->
+<!--    <mvc:resources location="/html/" mapping="/html/**" />-->
+<!--    <mvc:resources location="/js/" mapping="/js/**" />-->
+<!--    第二种方式解决 声明<mvc:default-servlet-handler/> springmvc框架会在容器中创建DefaultServletHttpRequestHandler处理对象
+        他会像一个检查员，对进入DispatcherServlet的URL进行筛选，如果发现是静态资源的请求，就将改请求转向(转发)Web应用服务器默认的Servlet处理
+        。一般的服务器都有默认的Servlet，在Tomcat中有一个专门用于处理静态资源访问的Servlet名叫DefaultServlet。其<servlet-name/>为default
+        可以处理各种静态资源访问请求。改Servlet注册在Tomcat服务器的web.xml中。-->
+    <mvc:default-servlet-handler/>
 </beans>
